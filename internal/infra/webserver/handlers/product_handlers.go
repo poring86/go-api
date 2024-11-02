@@ -5,9 +5,10 @@ import (
 	"go-api/internal/dto"
 	"go-api/internal/entity"
 	"go-api/internal/infra/database"
-	"github.com/go-chi/chi/v5"
 	entityPkg "go-api/pkg/entity"
 	"net/http"
+
+	"github.com/go-chi/chi/v5"
 )
 
 type ProductHandler struct {
@@ -40,11 +41,11 @@ func (h *ProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 }
 
-func (h *ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request){
+func (h *ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
-	if id == ""{
+	if id == "" {
 		w.WriteHeader(http.StatusBadRequest)
-		return 
+		return
 	}
 	product, err := h.ProductDB.FindByID(id)
 	if err != nil {
@@ -79,6 +80,25 @@ func (h *ProductHandler) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	err = h.ProductDB.Update(&product)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+}
+
+func (h *ProductHandler) DeleteProduct(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	if id == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	_, err := h.ProductDB.FindByID(id)
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+	err = h.ProductDB.Delete(id)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
