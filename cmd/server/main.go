@@ -23,12 +23,8 @@ import (
 // @description     Product API with auhtentication
 // @termsOfService  http://swagger.io/terms/
 
-// @contact.name   Wesley Willians
-// @contact.url    http://www.fullcycle.com.br
-// @contact.email  atendimento@fullcycle.com.br
-
-// @license.name   Full Cycle License
-// @license.url    http://www.fullcycle.com.br
+// @contact.name   Matheus Lino
+// @contact.email  matheuslino86a@gmail.com.br
 
 // @host      localhost:8000
 // @BasePath  /
