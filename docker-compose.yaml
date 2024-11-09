@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  go-api:
+    build: .
+    container_name: go-api-container
+    ports:
+      - "8000:8000"  # Mapeando a porta 8000 do contêiner para a porta 8000 da máquina host
+    volumes:
+      - .:/app  # Sincroniza o código do host com o contêiner
+    networks:
+      - go-api-network
+
+networks:
+  go-api-network:
+    driver: bridge
