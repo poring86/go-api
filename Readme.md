@@ -10,13 +10,6 @@ Este projeto é uma API desenvolvida em Go com uma arquitetura modular, projetad
 - [Autenticação JWT](#autenticação-jwt)
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Configuração](#configuração)
-- [Execução](#execução)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Documentação da API com Swagger](#documentação-da-api-com-swagger)
-- [Deploy com Docker](#deploy-com-docker)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
 
 ## Descrição
 
